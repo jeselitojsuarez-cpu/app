@@ -19,9 +19,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # This step tells the runner to download the Android SDK
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
+      with:
+        # Explicitly define packages to avoid the deprecated 'tools' package
+        packages: 'platform-tools platforms;android-34 build-tools;34.0.0'
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
